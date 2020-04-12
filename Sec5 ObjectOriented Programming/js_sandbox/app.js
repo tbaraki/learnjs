@@ -1,32 +1,27 @@
 class Person {
-	constructor(firstName, lastName, dob) {
+	constructor(firstName, lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.birthday = new Date(dob);
 	}
 
 	greeting() {
-		return `Hello ${this.firstName} ${this.lastName}`;
-	}
-
-	calculateAge() {
-		const diff = Date.now() - this.birthday.getTime();
-		const ageDate = new Date(diff);
-		return Math.abs(ageDate.getUTCFullYear() - 1970);
-	}
-
-	getsMarried(newLastName) {
-		this.lastName = newLastName;
-	}
-
-	static addNumbers(x, y) {
-		return x + y;
+		return `Hello there ${this.firstName} ${this.lastName}.`;
 	}
 }
 
-const mary = new Person('Mary', 'Smith', '7-22-1986');
+class Customer extends Person {
+	constructor(firstName, lastName, phone, membership) {
+		super(firstName, lastName);
 
-mary.getsMarried('Jones');
+		this.phone = phone;
+		this.membership = membership;
+	}
 
-console.log(mary);
-console.log(Person.addNumbers(1, 2));
+	static getMembershipCost() {
+		return 500;
+	}
+}
+
+const john = new Customer('John', 'Smith', '555-555-5555', 'Standard');
+console.log(john.greeting());
+console.log(Customer.getMembershipCost());
