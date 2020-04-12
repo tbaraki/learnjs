@@ -1,37 +1,38 @@
-function Person(firstName, lastName, dob) {
+// person contructor
+function Person(firstName, lastName) {
 	this.firstName = firstName;
 	this.lastName = lastName;
-	this.birthday = new Date(dob);
-	// this.calculateAge = function () {
-	// 	const diff = (Date.now() = this.birthday.getTime());
-	// 	const ageDate = new Date(diff);
-	// 	return Math.abs(ageDate.getUTCFullYear() - 1970);
-	// };
+}
+// Greeting
+Person.prototype.greeting = function () {
+	return `Hello there ${this.firstName} ${this.lastName}`;
+};
+
+const person1 = new Person("John", "Doe");
+
+console.log(person1.greeting());
+
+// Customer constructor
+function Customer(firstName, lastName, phone, membership) {
+	Person.call(this, firstName, lastName);
+	this.phone = phone;
+	this.membership = membership;
 }
 
-// calculate age
-Person.prototype.calculateAge = function () {
-	const diff = Date.now() - this.birthday.getTime();
-	const ageDate = new Date(diff);
-	return Math.abs(ageDate.getUTCFullYear() - 1970);
+// inherit the Person proototype methods
+Customer.prototype = Object.create(Person.prototype);
+
+// Make customer.prototype reutn Customer
+Customer.prototype.constructor = Customer;
+
+// create a customer
+const customer1 = new Customer("Tom", "Jones", "555-555-5555", "Standard");
+
+console.log(customer1);
+
+// Customer greeting
+Customer.prototype.greeting = function () {
+	return `Hello there ${this.firstName} ${this.lastName}, welcome to our company.`;
 };
 
-// get full name
-Person.prototype.getFullName = function () {
-	return `${this.firstName} ${this.lastName}`;
-};
-
-// Gets Married
-Person.prototype.getsMarried = function (newLastName) {
-	this.lastName = newLastName;
-};
-
-const john = new Person("John", "Johnson", "8-12-1990");
-const mary = new Person("Mary", "Smith", "5-22-76");
-
-console.log(mary);
-console.log(john.calculateAge());
-console.log(mary.getFullName());
-
-mary.getsMarried("Jones");
-console.log(mary.getFullName());
+console.log(customer1.greeting());
