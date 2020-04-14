@@ -39,10 +39,10 @@ function loadCustomers(e) {
 			customers.forEach(function (customer) {
 				output += `
         <ul>
-          <li>ID: ${customer.id}</li>
-          <li>Name: ${customer.name}</li>
-          <li>Company: ${customer.company}</li>
-          <li>Phone: ${customer.phone}</li>
+          <li>ID: ${customers.id}</li>
+          <li>Name: ${customers.name}</li>
+          <li>Company: ${customers.company}</li>
+          <li>Phone: ${customers.phone}</li>
         </ul>
       `;
 			});
