@@ -3,11 +3,20 @@ const posts = [
 	{ title: 'Post Two', body: 'this is post two.' },
 ];
 
-function createPost(post, callback) {
-	setTimeout(function () {
-		posts.push(post);
-		callback(); // callback function to capture Post Three
-	}, 2000);
+function createPost(post) {
+	return new Promise(function (resolve, reject) {
+		setTimeout(function () {
+			posts.push(post);
+
+			const error = false;
+
+			if (!error) {
+				resolve();
+			} else {
+				reject('Error: Something went wrong');
+			}
+		}, 2000);
+	});
 }
 
 function getPosts() {
@@ -20,4 +29,8 @@ function getPosts() {
 	}, 1000);
 }
 
-createPost({ title: 'Post Three', body: 'this is post three.' }, getPosts);
+createPost({ title: 'Post Three', body: 'this is post three.' })
+	.then(getPosts)
+	.catch(function (err) {
+		console.log(err);
+	});
