@@ -17,12 +17,12 @@ const data = {
 // 	.then((data) => console.log(data))
 // 	.catch((err) => console.log(err));
 
-// update user
-http.put('https://jsonplaceholder.typicode.com/users/2', data)
-	.then((data) => console.log(data))
-	.catch((err) => console.log(err));
-
-// // delete user
-// http.delete('https://jsonplaceholder.typicode.com/users/3')
+// // update user
+// http.put('https://jsonplaceholder.typicode.com/users/2', data)
 // 	.then((data) => console.log(data))
 // 	.catch((err) => console.log(err));
+
+// delete user
+http.delete('https://jsonplaceholder.typicode.com/users/3')
+	.then((data) => console.log(data))
+	.catch((err) => console.log(err));
