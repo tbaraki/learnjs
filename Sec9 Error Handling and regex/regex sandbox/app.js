@@ -1,37 +1,29 @@
 let re;
+// Literal Characters
 re = /hello/;
-re = /hello/i; // i means case insensitive
 
-// console.log(re);
-// console.log(re.source);
+// metacharacter symbols
+re = /^h/i; // must start with h
+re = /d$/i; // must end with d
+re = /^hello$/i; // must end and start with hello. 'can only be hello'
+re = /h.llo/i; // match any ONE wildcard character
+re = /h*llo/i; // match any character 0 or more times
+re = /gre?a?y/i; // optional a or e
+re = /gre?a?y\?/i; // escape characters
 
-// // exec() = Return result in an array or null
-// const result = re.exec('brad says hello');
+// string to match
+const str = 'Gray?';
 
-// console.log(result);
-// console.log(result[0]);
-// console.log(result.index);
-// console.log(result.input);
+// log results
+const result = re.exec(str);
+console.log(result);
 
-// // test() = Returns true of false
-// const result = re.test('Hello');
+function reTest(re, str) {
+	if (re.test(str)) {
+		console.log(`${str} matches ${re.source}`);
+	} else {
+		console.log(`${str} does NOT match ${re.source}`);
+	}
+}
 
-// console.log(result);
-
-// // match() = return result array or null
-// const str = 'Hello there';
-// const result = str.match(re);
-
-// console.log(result);
-
-// // search() = returns the idnex of the first match, if not found resturns -1
-// const str = 'Hello there';
-// const result = str.search(re);
-
-// console.log(result);
-
-// replace() = return a new string with some or all matches of a pattern
-const str = 'Hello There';
-const newStr = str.replace(re, 'Hi');
-
-console.log(newStr);
+reTest(re, str);
