@@ -11,6 +11,13 @@ re = /h*llo/i; // match any character 0 or more times
 re = /gre?a?y/i; // optional a or e
 re = /gre?a?y\?/i; // escape characters
 
+// [] = character sets
+re = /gr[ae]y/i; // must be a or e
+re = /[GF]ray/; // must be upper case G or F
+re = /[^GF]ray/; // match anything EXCEPT G or F
+re = /[A-Z]ray/; // match anything from A-Z
+re = /[a-z]ray/; // match anything from a-z
+
 // string to match
 const str = 'Gray?';
 
