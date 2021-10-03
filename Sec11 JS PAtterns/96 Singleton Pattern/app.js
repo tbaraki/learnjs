@@ -20,6 +20,6 @@ const Singleton = (function() {
 const instanceA = Singleton.getInstance();
 const instanceB = Singleton.getInstance();
 
-// console.log(instanceA);
+console.log(instanceA);
 
 console.log(instanceA === instanceB) // can never have more than one instance with this pattern.
